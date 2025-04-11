@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Editor</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Image Editor</h1>
+        </header>
+        
+        <main>
+            <section id="search-section">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search for images...">
+                    <button id="search-button">Search</button>
+                </div>
+                <div id="search-results" class="results-grid"></div>
+            </section>
+            
+            <section id="editor-section" class="hidden">
+                <div class="editor-container">
+                    <div class="canvas-container">
+                        <canvas id="canvas"></canvas>
+                    </div>
+                    <div class="tools-container">
+                        <div class="tool-group">
+                            <h3>Add Elements</h3>
+                            <button id="add-text">Add Text</button>
+                            <div class="tool-option">
+                                <label for="text-color">Text Color:</label>
+                                <input type="color" id="text-color" value="#000000">
+                            </div>
+                            <button id="add-rectangle">Add Rectangle</button>
+                            <button id="add-circle">Add Circle</button>
+                            <button id="add-triangle">Add Triangle</button>
+                            <button id="add-polygon">Add Polygon</button>
+                            <div class="tool-option">
+                                <label for="shape-color">Shape Color:</label>
+                                <input type="color" id="shape-color" value="#ff0000">
+                            </div>
+                            <div class="tool-option">
+                                <label for="shape-opacity">Opacity:</label>
+                                <input type="range" id="shape-opacity" min="0" max="1" step="0.1" value="0.5">
+                            </div>
+                        </div>
+                        <div class="tool-group">
+                            <h3>Actions</h3>
+                            <button id="delete-button">Delete Selected</button>
+                            <button id="bring-forward">Bring Forward</button>
+                            <button id="send-backward">Send Backward</button>
+                            <button id="download-button">Download Image</button>
+                            <button id="back-to-search">Back to Search</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="layer-info">
+                    <h3>Layer Information</h3>
+                    <pre id="layer-data"></pre>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Created for Vega6 Webware Technologies Assignment</p>
+        </footer>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html> 

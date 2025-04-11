@@ -1,0 +1,302 @@
+.editorSection {
+  background-color: #a4ade2;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.editorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.editorHeader h2 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin: 0;
+  font-weight: 700;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background-color: #f8f9fa;
+  color: #2c3e50;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.backButton:hover {
+  background-color: #e9ecef;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.backButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.editorContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+@media (min-width: 992px) {
+  .editorContainer {
+    flex-direction: row;
+  }
+}
+
+.previewContainer {
+  flex: 1;
+  max-height: 600px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.toolsContainer {
+  width: 100%;
+  max-width: 350px;
+}
+.toolGroup{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.toolGroup input{
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.toolGroup {
+  margin-bottom: 25px;
+  padding: 25px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.toolGroup:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.toolGroup h3 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+  font-size: 1.3rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.toolGroup h3::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background-color: #3498db;
+  border-radius: 3px;
+}
+
+.textInput {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.textInput:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.colorPicker {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.colorPicker label {
+  flex: 1;
+  font-weight: 500;
+}
+
+.colorPicker input[type="color"] {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: none;
+}
+
+.opacitySlider {
+  margin-bottom: 15px;
+}
+
+.opacitySlider label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.shapeButtons, .layerButtons {
+  display: grid;  
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.layerButtons {
+  grid-template-columns: 1fr 1fr;
+}
+
+.layerButtons button:last-child {
+  grid-column: span 2;
+  margin-top: 10px;
+}
+
+.toolGroup button {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 12px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 600;
+  font-size: 15px;
+  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.2);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.toolGroup button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.5s;
+  z-index: -1;
+}
+
+.toolGroup button:hover {
+  background-color: #2980b9;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(52, 152, 219, 0.3);
+}
+
+.toolGroup button:hover::before {
+  left: 100%;
+}
+
+.toolGroup button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.toolGroup button:disabled::before {
+  display: none;
+}
+
+.deleteButton {
+  background-color: #e74c3c !important;
+}
+
+.deleteButton:hover {
+  background-color: #c0392b !important;
+}
+
+.downloadButton {
+  background-color: #27ae60 !important;
+  font-size: 16px !important;
+  padding: 16px !important;
+}
+
+.downloadButton:hover {
+  background-color: #219653 !important;
+}
+.deleteButton{
+  background: red;
+}
+
+.errorContainer {
+  text-align: center;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.errorContainer h2 {
+  color: #e74c3c;
+  margin-bottom: 20px;
+}
+
+.errorContainer button {
+  padding: 12px 24px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 20px;
+  transition: all 0.3s;
+}
+
+.errorContainer button:hover {
+  background-color: #2980b9;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(52, 152, 219, 0.3);
+}
+
+
