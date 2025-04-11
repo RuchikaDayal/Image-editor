@@ -159,14 +159,18 @@ const ImageEditor = () => {
   };
 
   // Handle download
-  const handleDownload = async() => {
-    if (globalFabricCanvas) {
-      const dataURL = globalFabricCanvas.toDataURL({
-        format: "png",
-        quality: 1.0,
-      });   
-   saveAs(dataURL, "edited-image.png");
-    }
+  const handleDownload = async () => {
+    if (!globalFabricCanvas) return;
+    const dataURL = globalFabricCanvas.toDataURL({
+      format: "png",
+      quality: 1.0,
+    });
+    const link = document.createElement('a');
+    link.download = 'edited-image.png';
+    link.href = dataURL;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   // Handle delete
