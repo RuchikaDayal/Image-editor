@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./ImageEditor.module.css";
-import { saveAs } from "file-saver";
 import { fabric } from "fabric";
 
 const ImageEditor = () => {
@@ -16,6 +15,7 @@ const ImageEditor = () => {
   const [layers, setLayers] = useState([]);
 
   const canvasRef = useRef(null);
+ 
 
   useEffect(() => {
     const checkCanvas = () => {
@@ -31,21 +31,25 @@ const ImageEditor = () => {
         height: 600,
         
       });
+
+      
     
       fabric.Image.fromURL(imageUrl, (img) => {
         // Calculate scale to fit canvas while maintaining aspect ratio
         const canvasWidth = fabricCanvas.width;
         const canvasHeight = fabricCanvas.height;
-        
-        const imgWidth = img.width;
-        const imgHeight = img.height;
-        
+
+      const imgWidth = img.width;
+      const  imgHeight = img.height;
+        console.log(imgWidth, imgHeight);
         const scaleX = canvasWidth / imgWidth;
         const scaleY = canvasHeight / imgHeight;
         const scale = Math.min(scaleX, scaleY);
         
         // Apply scaling
         img.scale(scale);
+
+        console.log(scale , imgWidth*scale, imgHeight*scale, canvasWidth, canvasHeight, img);
         
         // Center the image
         img.set({
@@ -59,6 +63,7 @@ const ImageEditor = () => {
         
         fabricCanvas.add(img);
         fabricCanvas.renderAll();
+       
       }, {crossOrigin: 'anonymous'});
       setGlobalFabricCanvas(fabricCanvas);
       setIsLoading(false);
@@ -100,6 +105,12 @@ const ImageEditor = () => {
       });
       globalFabricCanvas.add(fabricText);
       fabricText.bringToFront();
+      fabricText.set({
+        left:globalFabricCanvas.width / 2,
+        top: globalFabricCanvas.height / 2,
+        originX: 'center',
+        originY: 'center',
+      });
       globalFabricCanvas.setActiveObject(fabricText);
       globalFabricCanvas.renderAll();
     }
@@ -232,7 +243,7 @@ const ImageEditor = () => {
               className={styles.textInput}
               onChange={(e) => setText(e.target.value)}
             />
-            <button onClick={handleAddText}>Add Text</button>
+            <button onClick={handleAddText} disabled={!text}>Add Text</button>
             {/* </div> */}
           </div>
 
