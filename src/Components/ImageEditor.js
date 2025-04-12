@@ -156,6 +156,12 @@ const ImageEditor = () => {
       }
 
       globalFabricCanvas.add(fabricShape);
+      fabricShape.set({
+        left: globalFabricCanvas.width / 2,
+        top: globalFabricCanvas.height / 2,
+        originX: 'center',
+        originY: 'center',
+      });
 
       const canvasObject = globalFabricCanvas.getObjects();
       globalFabricCanvas.setActiveObject(fabricShape);
